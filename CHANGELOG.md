@@ -1,3 +1,166 @@
+# [3.8.0](https://github.com/Thorium-Sim/thorium/compare/3.7.1...3.8.0) (2022-10-06)
+
+
+### Features
+
+* Add notifications for hacking controls. Closes [#3251](https://github.com/Thorium-Sim/thorium/issues/3251) ([378bf98](https://github.com/Thorium-Sim/thorium/commit/378bf9842b0a5502100173a603616832d6f56431))
+* PrintQueue core makes it possible to queue items to be printed through keyboards and triggers. Also enables printing documents from macro buttons. Closes [#3250](https://github.com/Thorium-Sim/thorium/issues/3250) ([4e92ef4](https://github.com/Thorium-Sim/thorium/commit/4e92ef4715399057b63e93bf9cbe713a15f76d3a))
+
+# [3.8.0](https://github.com/Thorium-Sim/thorium/compare/3.7.1...3.8.0) (2022-10-05)
+
+
+### Features
+
+* Add notifications for hacking controls. Closes [#3251](https://github.com/Thorium-Sim/thorium/issues/3251) ([378bf98](https://github.com/Thorium-Sim/thorium/commit/378bf9842b0a5502100173a603616832d6f56431))
+* PrintQueue core makes it possible to queue items to be printed through keyboards and triggers. Also enables printing documents from macro buttons. Closes [#3250](https://github.com/Thorium-Sim/thorium/issues/3250) ([4e92ef4](https://github.com/Thorium-Sim/thorium/commit/4e92ef4715399057b63e93bf9cbe713a15f76d3a))
+
+## [3.7.1](https://github.com/Thorium-Sim/thorium/compare/3.7.0...3.7.1) (2022-09-14)
+
+
+### Bug Fixes
+
+* **Flight:** Fixex a bug with exporting flights. ([552b034](https://github.com/Thorium-Sim/thorium/commit/552b03438ec30b6a6251c6b30a19c2914ae094d7))
+
+# [3.7.0](https://github.com/Thorium-Sim/thorium/compare/3.6.2...3.7.0) (2022-07-30)
+
+
+### Bug Fixes
+
+* **Messaging:** It is no longer possible to send messages that have no content. ([7307c5b](https://github.com/Thorium-Sim/thorium/commit/7307c5b41efe35077756ac19cf579e1ad49fe3e2))
+* **Sensors:** The Sensors card can no longer toggle sensor grid blackouts ([40a15dd](https://github.com/Thorium-Sim/thorium/commit/40a15ddebf299cca60c8c4daa18c4ae7334fb4a2))
+
+
+### Features
+
+* **Triggers:** Adds Remote Access Code triggers. Closes [#3241](https://github.com/Thorium-Sim/thorium/issues/3241) ([a6c1def](https://github.com/Thorium-Sim/thorium/commit/a6c1def2639604880e4a68c454c7366db8d1a69f))
+
+## [3.6.2](https://github.com/Thorium-Sim/thorium/compare/3.6.1...3.6.2) (2022-07-13)
+
+
+### Bug Fixes
+
+* Fix an issue preventing the app from building. ([f2557f2](https://github.com/Thorium-Sim/thorium/commit/f2557f2ab4881a6f043d62b2d1ba846b7c74e5c3))
+
+## [3.6.1](https://github.com/Thorium-Sim/thorium/compare/3.6.0...3.6.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* Fix an issue with the build process ([3f37fe5](https://github.com/Thorium-Sim/thorium/commit/3f37fe5acf5065a03dcf2ca1c707e3991755342d))
+
+# [3.6.0](https://github.com/Thorium-Sim/thorium/compare/3.5.1...3.6.0) (2022-02-16)
+
+
+### Features
+
+* **Macro Buttons:** Adds the ability to reorganize the macro buttons. ([c463898](https://github.com/Thorium-Sim/thorium/commit/c463898117c64533d515c6f64f4d60f691f2114d))
+
+## [3.5.1](https://github.com/Thorium-Sim/thorium/compare/3.5.0...3.5.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* **MIssions:** Fixes an issue where you can't delete timeline actions. Closes [#3211](https://github.com/Thorium-Sim/thorium/issues/3211) ([4215eb3](https://github.com/Thorium-Sim/thorium/commit/4215eb36b949980a6e82081d6599af9d03b778a4))
+
+# [3.5.0](https://github.com/Thorium-Sim/thorium/compare/3.4.2...3.5.0) (2021-12-01)
+
+
+### Bug Fixes
+
+* **Tasks:** Fixes an issue where task data was being transferred between tasks inadvertently. Closes [#3197](https://github.com/Thorium-Sim/thorium/issues/3197) ([3cefd97](https://github.com/Thorium-Sim/thorium/commit/3cefd97b8c053f86fca38609c884310ca1d4872a))
+
+
+### Features
+
+* **Computer Core:** Add notifications to the computer core. Closes [#1998](https://github.com/Thorium-Sim/thorium/issues/1998) ([1b0b877](https://github.com/Thorium-Sim/thorium/commit/1b0b8771a9318c42eb46b30464d6a9489484c12e))
+* **Missions:** Makes it possible to reorder timeline items within a timeline step. Closes [#1977](https://github.com/Thorium-Sim/thorium/issues/1977). ([0216ed4](https://github.com/Thorium-Sim/thorium/commit/0216ed48504802f4fda2336e04a7dd8d67b9c078))
+
+## [3.4.2](https://github.com/Thorium-Sim/thorium/compare/3.4.1...3.4.2) (2021-10-01)
+
+
+### Bug Fixes
+
+* **Deploy:** Another deploy fix. ([6a2e349](https://github.com/Thorium-Sim/thorium/commit/6a2e3495d83b665745ac69e0310bcb16e00444d3))
+
+## [3.4.1](https://github.com/Thorium-Sim/thorium/compare/3.4.0...3.4.1) (2021-10-01)
+
+
+### Bug Fixes
+
+* **Deploy:** Fix an issue that caused the 3.4.0 deploy to fail. ([0b6c71f](https://github.com/Thorium-Sim/thorium/commit/0b6c71fc23cea679be3d857917a0587d4635f8a1))
+
+# [3.4.0](https://github.com/Thorium-Sim/thorium/compare/3.3.5...3.4.0) (2021-09-30)
+
+
+### Features
+
+* **Probes:** Adds a macro to destroy probe network and destroy launched probes. Changes the behavior of the "Destroy All Probes" button to first destroy all launched probes, then destroy all probes. Closes [#3199](https://github.com/Thorium-Sim/thorium/issues/3199) ([9a03835](https://github.com/Thorium-Sim/thorium/commit/9a03835ab4ce5c19543056ca88d029971c0d5daf))
+
+## [3.3.5](https://github.com/Thorium-Sim/thorium/compare/3.3.4...3.3.5) (2021-09-21)
+
+
+### Bug Fixes
+
+* **Panels:** Stop software panels from disappearing on flight reset ([aaf2477](https://github.com/Thorium-Sim/thorium/commit/aaf2477173a9e224e8103f1c64d4d3cd80d7a49f))
+
+## [3.3.4](https://github.com/Thorium-Sim/thorium/compare/3.3.3...3.3.4) (2021-06-24)
+
+
+### Bug Fixes
+
+* **Messaging:** Stop overriding style of alerted chat messages. Fixes [#3137](https://github.com/Thorium-Sim/thorium/issues/3137) ([80595a6](https://github.com/Thorium-Sim/thorium/commit/80595a6769edce0f431a03564f3758f287796e6e))
+* **Sounds:** Add missing functionality for StopAllSounds and StopLoopingSounds macros. Fixes [#3165](https://github.com/Thorium-Sim/thorium/issues/3165) ([40ef572](https://github.com/Thorium-Sim/thorium/commit/40ef572883089916fece2fc1de30eccdc66b670a))
+
+## [3.3.3](https://github.com/Thorium-Sim/thorium/compare/3.3.2...3.3.3) (2021-05-11)
+
+
+### Bug Fixes
+
+* **Reactor:** Fixes a rounding error when using Left/Right wing power. Closes [#3140](https://github.com/Thorium-Sim/thorium/issues/3140) ([79ad778](https://github.com/Thorium-Sim/thorium/commit/79ad778de1a6eb1d7a3859c24f09577b5401cee6))
+
+## [3.3.2](https://github.com/Thorium-Sim/thorium/compare/3.3.1...3.3.2) (2021-05-11)
+
+
+### Bug Fixes
+
+* **DMX:** Fix the lower threshold for some effects. ([f6bf4c4](https://github.com/Thorium-Sim/thorium/commit/f6bf4c46d358039ea415d3c8e6ff18a623d5c8a5))
+* **Probes:** Fix an issue where launching probes doesn't work correctly. Closes [#3134](https://github.com/Thorium-Sim/thorium/issues/3134) ([ecce25e](https://github.com/Thorium-Sim/thorium/commit/ecce25e076819eba2d1b8a947a368853768fdb47))
+* **Sensors:** Fixes an issue where sensor contacts don't properly move. Also fixes an issue with probe science not emitting. Closes [#3130](https://github.com/Thorium-Sim/thorium/issues/3130). Closes [#3101](https://github.com/Thorium-Sim/thorium/issues/3101). Closes [#3088](https://github.com/Thorium-Sim/thorium/issues/3088). Closes [#2841](https://github.com/Thorium-Sim/thorium/issues/2841). Closes [#3134](https://github.com/Thorium-Sim/thorium/issues/3134) ([7ba2644](https://github.com/Thorium-Sim/thorium/commit/7ba2644c6ae9afc2d99670fb165474811be7e497))
+
+## [3.3.1](https://github.com/Thorium-Sim/thorium/compare/3.3.0...3.3.1) (2021-02-08)
+
+
+### Bug Fixes
+
+* **Dilithium Stress:** Fixes an issue where dilithium stress doesn't appear on the status card. Closes [#3089](https://github.com/Thorium-Sim/thorium/issues/3089) ([c28a5a1](https://github.com/Thorium-Sim/thorium/commit/c28a5a125d40a72cdf839eae077b78196bbc6abd))
+* **Lighting:** Adds a lower bound to the shake and oscillate effect to help improve the lifespan of certain lighting fixtures. Closes [#3082](https://github.com/Thorium-Sim/thorium/issues/3082) ([11f78d4](https://github.com/Thorium-Sim/thorium/commit/11f78d493b26f17414cead7641a03920d8ff7ffd))
+* **Software Panels:** Improves the behavior of software panels on touchscreens. Closes [#3076](https://github.com/Thorium-Sim/thorium/issues/3076). Closes [#3077](https://github.com/Thorium-Sim/thorium/issues/3077). ([d248c58](https://github.com/Thorium-Sim/thorium/commit/d248c58b23c5c37aba66e9d5f26d4f8da2bc9166))
+
+# [3.3.0](https://github.com/Thorium-Sim/thorium/compare/3.2.0...3.3.0) (2021-02-01)
+
+
+### Bug Fixes
+
+* **DMX:** Improves the way DMX effects are handled. Closes [#3079](https://github.com/Thorium-Sim/thorium/issues/3079) ([803755d](https://github.com/Thorium-Sim/thorium/commit/803755dc1019d820695c6a6b77f5e0a9247ba8f5))
+
+
+### Features
+
+* **Code Cyphers:** Creates a code cyphers widget ([ba74a03](https://github.com/Thorium-Sim/thorium/commit/ba74a031493102e11beb6e9ef01069a2ad7afb9f))
+
+# [3.2.0](https://github.com/Thorium-Sim/thorium/compare/3.1.2...3.2.0) (2021-01-28)
+
+
+### Bug Fixes
+
+* **DMX:** Improvements to DMX lighting. Lights no longer respond to alert level changes during training mode. Adds a "focus" channel. Changes the DMX values to be 0-255 instead of 0-1. ([1483469](https://github.com/Thorium-Sim/thorium/commit/1483469ba3819de38afec0c1b0cdbd117856c6f1))
+* **Tractor Beam:** Fixes an issue where the tractor beam strength bar doesn't properly adjust when there is a maximum level limit. Closes [#3072](https://github.com/Thorium-Sim/thorium/issues/3072) ([4ed2f67](https://github.com/Thorium-Sim/thorium/commit/4ed2f67e19656ac994f2f4e546c44d9ed2b0038c))
+
+
+### Features
+
+* **Stealth:** Adds a checkbox in the stealth core to control whether stealth changes the alert condition. ([539712e](https://github.com/Thorium-Sim/thorium/commit/539712e981a7166961ddf869b7c04922e5596644))
+
 ## [3.1.2](https://github.com/Thorium-Sim/thorium/compare/3.1.1...3.1.2) (2021-01-15)
 
 

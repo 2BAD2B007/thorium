@@ -102,6 +102,13 @@ const schema = gql`
       timelineStepId: ID!
       order: Int!
     ): String
+    reorderTimelineItem(
+      simulatorId: ID
+      missionId: ID
+      timelineStepId: ID!
+      timelineItemId: ID!
+      order: Int!
+    ): String
     updateTimelineStep(
       simulatorId: ID
       missionId: ID
@@ -222,7 +229,7 @@ const resolver = {
       const {schema} = require("../bootstrap/apollo");
       const field = schema.getMutationType().getFields()[event];
       return Boolean(
-        field?.args?.find(a => a.description.indexOf("Dynamic") > -1),
+        field?.args?.find(a => a.description?.indexOf("Dynamic") > -1),
       );
     },
     event({event}) {

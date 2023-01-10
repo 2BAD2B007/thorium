@@ -548,6 +548,10 @@ type Mutation {
   setMacroButtonCategory(configId: ID!, id: ID!, category: String!): String
   setMacroButtonColor(configId: ID!, id: ID!, color: NotifyColors!): String
   updateMacroButtonActions(configId: ID!, id: ID!, actions: [ActionInput]): String
+
+  """Reorder Macros"""
+  reorderMacroButton(configId: ID!, oldIndex: Int!, newIndex: Int!): String
+  reorderMacroAction(configId: ID!, id: ID!, oldIndex: Int!, newIndex: Int!): String
   triggerMacroButton(simulatorId: ID!, configId: ID!, buttonId: ID!): String
   toggleStationMessageGroup(stationSetId: ID!, station: String!, group: String!, state: Boolean!): String
 
@@ -574,6 +578,7 @@ type Mutation {
   addTimelineStep(simulatorId: ID, missionId: ID, name: String!, description: String): ID
   removeTimelineStep(simulatorId: ID, missionId: ID, timelineStepId: ID!): String
   reorderTimelineStep(simulatorId: ID, missionId: ID, timelineStepId: ID!, order: Int!): String
+  reorderTimelineItem(simulatorId: ID, missionId: ID, timelineStepId: ID!, timelineItemId: ID!, order: Int!): String
   updateTimelineStep(simulatorId: ID, missionId: ID, timelineStepId: ID!, name: String, description: String): String
   addTimelineItemToTimelineStep(simulatorId: ID, missionId: ID, timelineStepId: ID!, timelineItem: TimelineItemInput!): String
   removeTimelineStepItem(simulatorId: ID, missionId: ID, timelineStepId: ID!, timelineItemId: ID!): String
@@ -645,7 +650,22 @@ type Mutation {
   """Macro: Systems: Flux Power"""
   fluxSystemPower(id: ID, all: Boolean, simulatorId: ID, type: String, name: String): String
   destroyProbe(id: ID!, probeId: ID!): String
+
+  """
+  Macro: Probes: Destroy All Probes
+  Requires:
+   - Cards:ProbeNetwork
+   - Systems:Probes
+  """
   destroyAllProbes(id: ID!): String
+
+  """
+  Macro: Probes: Destroy Probe Network
+  Requires:
+   - Cards:ProbeNetwork
+   - Systems:Probes
+  """
+  destroyAllProbeNetwork(id: ID!): String
   launchProbe(id: ID!, probe: ProbeInput!): String
   fireProbe(id: ID!, probeId: ID!): String
   updateProbeType(id: ID!, probeType: ProbeTypeInput!): String
@@ -851,6 +871,7 @@ type Mutation {
 
   """Macro: Actions: Print PDF Asset"""
   printPdf(asset: String!): String
+  clearPdf(id: ID!): String
   commAddSignal(id: ID!, commSignalInput: CommSignalInput!): String
   commUpdateSignal(id: ID!, commSignalInput: CommSignalInput!): String
 
@@ -1444,6 +1465,7 @@ type Subscription {
   shieldsUpdate(simulatorId: ID): [Shield]
   notify(simulatorId: ID!, station: String, trigger: String): Notification
   widgetNotify(simulatorId: ID!, station: String): String
+  printQueue(simulatorId: ID!): [PrintQueue]
   shortRangeCommUpdate(simulatorId: ID!): [ShortRangeComm]
   sickbayUpdate(simulatorId: ID): [Sickbay]
   signalJammersUpdate(simulatorId: ID!): [SignalJammer]
@@ -3384,6 +3406,13 @@ enum NotifyColors {
   info
   light
   dark
+}
+
+type PrintQueue {
+  id: ID!
+  simulatorId: String!
+  asset: String!
+  timestamp: Float!
 }
 
 type ShortRangeComm implements SystemInterface {

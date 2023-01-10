@@ -212,7 +212,26 @@
         "bug",
         "test"
       ]
+    },
+    {
+      "login": "SoshJam",
+      "name": "SoshJam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21060092?v=4",
+      "profile": "https://github.com/SoshJam",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Trajkov",
+      "name": "Micah Clegg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31600957?v=4",
+      "profile": "https://github.com/Trajkov",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "commitConvention": "none"
 }

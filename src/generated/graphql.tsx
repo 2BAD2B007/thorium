@@ -1050,6 +1050,9 @@ export type Mutation = {
   setMacroButtonCategory?: Maybe<Scalars['String']>;
   setMacroButtonColor?: Maybe<Scalars['String']>;
   updateMacroButtonActions?: Maybe<Scalars['String']>;
+  /** Reorder Macros */
+  reorderMacroButton?: Maybe<Scalars['String']>;
+  reorderMacroAction?: Maybe<Scalars['String']>;
   triggerMacroButton?: Maybe<Scalars['String']>;
   toggleStationMessageGroup?: Maybe<Scalars['String']>;
   /**
@@ -1073,6 +1076,7 @@ export type Mutation = {
   addTimelineStep?: Maybe<Scalars['ID']>;
   removeTimelineStep?: Maybe<Scalars['String']>;
   reorderTimelineStep?: Maybe<Scalars['String']>;
+  reorderTimelineItem?: Maybe<Scalars['String']>;
   updateTimelineStep?: Maybe<Scalars['String']>;
   addTimelineItemToTimelineStep?: Maybe<Scalars['String']>;
   removeTimelineStepItem?: Maybe<Scalars['String']>;
@@ -1136,7 +1140,20 @@ export type Mutation = {
   /** Macro: Systems: Flux Power */
   fluxSystemPower?: Maybe<Scalars['String']>;
   destroyProbe?: Maybe<Scalars['String']>;
+  /**
+   * Macro: Probes: Destroy All Probes
+   * Requires:
+   *  - Cards:ProbeNetwork
+   *  - Systems:Probes
+   */
   destroyAllProbes?: Maybe<Scalars['String']>;
+  /**
+   * Macro: Probes: Destroy Probe Network
+   * Requires:
+   *  - Cards:ProbeNetwork
+   *  - Systems:Probes
+   */
+  destroyAllProbeNetwork?: Maybe<Scalars['String']>;
   launchProbe?: Maybe<Scalars['String']>;
   fireProbe?: Maybe<Scalars['String']>;
   updateProbeType?: Maybe<Scalars['String']>;
@@ -1318,6 +1335,7 @@ export type Mutation = {
   notify?: Maybe<Scalars['String']>;
   /** Macro: Actions: Print PDF Asset */
   printPdf?: Maybe<Scalars['String']>;
+  clearPdf?: Maybe<Scalars['String']>;
   commAddSignal?: Maybe<Scalars['String']>;
   commUpdateSignal?: Maybe<Scalars['String']>;
   /**
@@ -3314,6 +3332,21 @@ export type MutationUpdateMacroButtonActionsArgs = {
 };
 
 
+export type MutationReorderMacroButtonArgs = {
+  configId: Scalars['ID'];
+  oldIndex: Scalars['Int'];
+  newIndex: Scalars['Int'];
+};
+
+
+export type MutationReorderMacroActionArgs = {
+  configId: Scalars['ID'];
+  id: Scalars['ID'];
+  oldIndex: Scalars['Int'];
+  newIndex: Scalars['Int'];
+};
+
+
 export type MutationTriggerMacroButtonArgs = {
   simulatorId: Scalars['ID'];
   configId: Scalars['ID'];
@@ -3413,6 +3446,15 @@ export type MutationReorderTimelineStepArgs = {
   simulatorId?: Maybe<Scalars['ID']>;
   missionId?: Maybe<Scalars['ID']>;
   timelineStepId: Scalars['ID'];
+  order: Scalars['Int'];
+};
+
+
+export type MutationReorderTimelineItemArgs = {
+  simulatorId?: Maybe<Scalars['ID']>;
+  missionId?: Maybe<Scalars['ID']>;
+  timelineStepId: Scalars['ID'];
+  timelineItemId: Scalars['ID'];
   order: Scalars['Int'];
 };
 
@@ -3707,6 +3749,11 @@ export type MutationDestroyProbeArgs = {
 
 
 export type MutationDestroyAllProbesArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDestroyAllProbeNetworkArgs = {
   id: Scalars['ID'];
 };
 
@@ -4439,6 +4486,11 @@ export type MutationNotifyArgs = {
 
 export type MutationPrintPdfArgs = {
   asset: Scalars['String'];
+};
+
+
+export type MutationClearPdfArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -6579,6 +6631,7 @@ export type Subscription = {
   shieldsUpdate?: Maybe<Array<Maybe<Shield>>>;
   notify?: Maybe<Notification>;
   widgetNotify?: Maybe<Scalars['String']>;
+  printQueue?: Maybe<Array<Maybe<PrintQueue>>>;
   shortRangeCommUpdate?: Maybe<Array<Maybe<ShortRangeComm>>>;
   sickbayUpdate?: Maybe<Array<Maybe<Sickbay>>>;
   signalJammersUpdate?: Maybe<Array<Maybe<SignalJammer>>>;
@@ -6975,6 +7028,11 @@ export type SubscriptionNotifyArgs = {
 export type SubscriptionWidgetNotifyArgs = {
   simulatorId: Scalars['ID'];
   station?: Maybe<Scalars['String']>;
+};
+
+
+export type SubscriptionPrintQueueArgs = {
+  simulatorId: Scalars['ID'];
 };
 
 
@@ -8725,9 +8783,11 @@ export type ScienceProbeEvent = {
 };
 
 export type ProbeInput = {
+  id?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['ID']>;
   equipment?: Maybe<Array<Maybe<EquipmentInput>>>;
+  launched?: Maybe<Scalars['Boolean']>;
 };
 
 export type EquipmentInput = {
@@ -9185,6 +9245,14 @@ export enum NotifyColors {
   Light = 'light',
   Dark = 'dark'
 }
+
+export type PrintQueue = {
+  __typename?: 'PrintQueue';
+  id: Scalars['ID'];
+  simulatorId: Scalars['String'];
+  asset: Scalars['String'];
+  timestamp: Scalars['Float'];
+};
 
 export type ShortRangeComm = SystemInterface & {
   __typename?: 'ShortRangeComm';
@@ -11638,6 +11706,29 @@ export type UpdateLightingMutation = (
   & Pick<Mutation, 'updateSimulatorLighting'>
 );
 
+export type ClearPdfMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type ClearPdfMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'clearPdf'>
+);
+
+export type PrintQueueSubscriptionVariables = Exact<{
+  simulatorId: Scalars['ID'];
+}>;
+
+
+export type PrintQueueSubscription = (
+  { __typename?: 'Subscription' }
+  & { printQueue?: Maybe<Array<Maybe<(
+    { __typename?: 'PrintQueue' }
+    & Pick<PrintQueue, 'id' | 'asset' | 'timestamp'>
+  )>>> }
+);
+
 export type ReactorAckWingPowerMutationVariables = Exact<{
   id: Scalars['ID'];
   wing: Scalars['String'];
@@ -13341,6 +13432,19 @@ export type TimelineRemoveStepMutationVariables = Exact<{
 export type TimelineRemoveStepMutation = (
   { __typename?: 'Mutation' }
   & Pick<Mutation, 'removeTimelineStep'>
+);
+
+export type TimelineReorderItemMutationVariables = Exact<{
+  missionId?: Maybe<Scalars['ID']>;
+  timelineStepId: Scalars['ID'];
+  timelineItemId: Scalars['ID'];
+  order: Scalars['Int'];
+}>;
+
+
+export type TimelineReorderItemMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'reorderTimelineItem'>
 );
 
 export type TimelineReorderStepMutationVariables = Exact<{
@@ -15516,6 +15620,28 @@ export function useUpdateLightingMutation(baseOptions?: ApolloReactHooks.Mutatio
         return ApolloReactHooks.useMutation<UpdateLightingMutation, UpdateLightingMutationVariables>(UpdateLightingDocument, baseOptions);
       }
 export type UpdateLightingMutationHookResult = ReturnType<typeof useUpdateLightingMutation>;
+export const ClearPdfDocument = gql`
+    mutation ClearPdf($id: ID!) {
+  clearPdf(id: $id)
+}
+    `;
+export function useClearPdfMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ClearPdfMutation, ClearPdfMutationVariables>) {
+        return ApolloReactHooks.useMutation<ClearPdfMutation, ClearPdfMutationVariables>(ClearPdfDocument, baseOptions);
+      }
+export type ClearPdfMutationHookResult = ReturnType<typeof useClearPdfMutation>;
+export const PrintQueueDocument = gql`
+    subscription PrintQueue($simulatorId: ID!) {
+  printQueue(simulatorId: $simulatorId) {
+    id
+    asset
+    timestamp
+  }
+}
+    `;
+export function usePrintQueueSubscription(baseOptions?: ApolloReactHooks.SubscriptionHookOptions<PrintQueueSubscription, PrintQueueSubscriptionVariables>) {
+        return ApolloReactHooks.useSubscription<PrintQueueSubscription, PrintQueueSubscriptionVariables>(PrintQueueDocument, baseOptions);
+      }
+export type PrintQueueSubscriptionHookResult = ReturnType<typeof usePrintQueueSubscription>;
 export const ReactorAckWingPowerDocument = gql`
     mutation ReactorAckWingPower($id: ID!, $wing: String!, $ack: Boolean!) {
   reactorAckWingRequest(id: $id, wing: $wing, ack: $ack)
@@ -17205,6 +17331,15 @@ export function useTimelineRemoveStepMutation(baseOptions?: ApolloReactHooks.Mut
         return ApolloReactHooks.useMutation<TimelineRemoveStepMutation, TimelineRemoveStepMutationVariables>(TimelineRemoveStepDocument, baseOptions);
       }
 export type TimelineRemoveStepMutationHookResult = ReturnType<typeof useTimelineRemoveStepMutation>;
+export const TimelineReorderItemDocument = gql`
+    mutation TimelineReorderItem($missionId: ID, $timelineStepId: ID!, $timelineItemId: ID!, $order: Int!) {
+  reorderTimelineItem(missionId: $missionId, timelineStepId: $timelineStepId, timelineItemId: $timelineItemId, order: $order)
+}
+    `;
+export function useTimelineReorderItemMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<TimelineReorderItemMutation, TimelineReorderItemMutationVariables>) {
+        return ApolloReactHooks.useMutation<TimelineReorderItemMutation, TimelineReorderItemMutationVariables>(TimelineReorderItemDocument, baseOptions);
+      }
+export type TimelineReorderItemMutationHookResult = ReturnType<typeof useTimelineReorderItemMutation>;
 export const TimelineReorderStepDocument = gql`
     mutation TimelineReorderStep($missionId: ID, $timelineStepId: ID!, $order: Int!) {
   reorderTimelineStep(missionId: $missionId, timelineStepId: $timelineStepId, order: $order)

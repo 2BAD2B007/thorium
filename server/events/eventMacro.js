@@ -109,7 +109,24 @@ App.on("triggerMacroButton", ({simulatorId, configId, buttonId}) => {
   const macro = App.macroButtonConfigs.find(s => s.id === configId);
   const button = macro.getButton(buttonId);
   // Don't allow a macro to trigger itself
-  const macros = button.actions;
+  const excludedActions = ["printPdf"];
+  const macros = button.actions.filter(
+    ({event}) => !excludedActions.includes(event),
+  );
   if (macros.length > 0)
     App.handleEvent({simulatorId, macros}, "triggerMacros");
+});
+
+// Reorder Macro Button
+App.on("reorderMacroButton", ({configId, oldIndex, newIndex}) => {
+  performButtonAction(configId, macro =>
+    macro.reorderButton(oldIndex, newIndex),
+  );
+});
+
+// Reorder Macro Action
+App.on("reorderMacroAction", ({configId, id, oldIndex, newIndex}) => {
+  performButtonAction(configId, macro =>
+    macro.getButton(id).reorderAction(oldIndex, newIndex),
+  );
 });
